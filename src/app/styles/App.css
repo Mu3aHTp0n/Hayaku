@@ -1,0 +1,17 @@
+#root {
+  margin: 0 auto;
+}
+
+button {
+  width: 250px;
+  border: none;
+  cursor: pointer;
+  padding: 28px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+button:hover {
+  background-color: color-mix(in oklab, #d4d4d4, black 12%);
+  transform: translateY(-8px);
+  transition: all 215ms;
+}

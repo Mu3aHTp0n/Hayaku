@@ -68,18 +68,18 @@
     z-index: 1;
     font-size: 16px;
     font-weight: normal;
-    max-height: 0px;
+    max-height: 0;
     transition: max-height 500ms ease-in-out;
     background-color: var(--light-grey);
     border-radius: 0 0 12px 12px;
 }
-.drowdown__item {
+.dropdown__item {
     display: flex;
     justify-content: space-between;
     padding: 8px;
     cursor: pointer;
 }
-.drowdown__item:hover {
+.dropdown__item:hover {
     background-color: color-mix(in oklab, var(--light-grey), black 20%);
 }
 .dropdown__title.active ~ .dropdown__body {

@@ -11,7 +11,6 @@ export default function RentalPage() {
                     {/* TODO: получение списка клиентов и прокатов с бека */}
                     <article className="rental-item">
                         <p className="rental__client">Тайлер Дерден</p>
-                        {/* TODO: выпадающее меню */}
                         <DropDownMenu />
                     </article>
                     <article className="rental-item">
@@ -24,7 +23,7 @@ export default function RentalPage() {
                     </article>
                 </section>
                 <section className="interaction">
-                    {/* TODO: Модальное окно с добавлением проката */}
+                    {/* TODO: TODAY Модальное окно с добавлением проката */}
                     <button>Добавить Тайлера</button>
                 </section>
             </Window>

@@ -5,6 +5,7 @@
 
 .window.rental{
     min-height: 500px;
+    max-height: none;
 }
 
 .rental {

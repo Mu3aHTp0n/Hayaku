@@ -93,12 +93,12 @@ export default function ClientPage() {
         <>
             <Window>
                 <aside className="sidebar">
-                    {/* TODO: сделать клиента активным при нажатии */}
+                    {/* TODO: TODAY сделать клиента активным при нажатии */}
                     <ul className="client-list">{clientsList}</ul>
                 </aside>
                 <section className="client__info">
                     <ul className="client-info__list">
-                        {/* TODO: Сделать вывод данных активного клиента */}
+                        {/* TODO: TODAY? Сделать вывод данных активного клиента */}
                         {/*<li className="client-info__key">Фамилия:          <span className="client-info__value">{currentClient.SecondName}</span></li>*/}
                         <li className="client-info__key">Фамилия:          <span className="client-info__value">{clients[0].secondName}</span></li>
                         <li className="client-info__key">Имя:              <span className="client-info__value">{clients[0].name}</span></li>
@@ -112,7 +112,7 @@ export default function ClientPage() {
                     </ul>
                 </section>
                 <section className="interaction">
-                    {/* TODO: модальное окно для добавления клиента с отправкой на бек */}
+                    {/* TODO: TODAY модальное окно для добавления клиента с отправкой на бек */}
                     <button>Добавить Тайлера</button>
                     {/* TODO: удаление активного клиента */}
                     <button>Удалить Тайлера</button>

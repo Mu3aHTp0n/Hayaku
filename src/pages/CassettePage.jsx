@@ -35,7 +35,7 @@ export default function CassettePage() {
                         <div className="button__container">
                             {/* TODO: Удаление выбранной кассеты */}
                             <button>Удалить кассету</button>
-                            {/* TODO: модальное окно с добавление изображения */}
+                            {/* TODO: TODAY модальное окно с добавление изображения */}
                             <button>Добавить кассету</button>
                         </div>
                     </section>

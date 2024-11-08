@@ -9,14 +9,8 @@ import DropDownMenu from "../DropDownMenu.jsx";
 
 export default function RentalPage() {
     const [isActive, setIsActive] = useState(null);
-    // const [dropdowns, setDropdowns] = useState(Array(3).fill(false));
-
 
     function handleClick(i) {
-        // const newDropdowns = [...dropdowns];
-        // newDropdowns[i] = !newDropdowns[i];
-        // setDropdowns(newDropdowns);
-        // console.log(dropdowns);
         setIsActive(isActive === i ? null : i);
     }
 

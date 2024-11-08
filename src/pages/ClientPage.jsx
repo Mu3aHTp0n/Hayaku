@@ -105,8 +105,8 @@ export default function ClientPage() {
                         <li className="client-info__key">Отчество:         <span className="client-info__value">{}</span></li>
                         <li className="client-info__key">Адрес:            <span className="client-info__value">{}</span></li>
                         <li className="client-info__key">Домашний телефон: <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Серия пасспорта:  <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Номер пасспорта:  <span className="client-info__value">{}</span></li>
+                        <li className="client-info__key">Серия паспорта:  <span className="client-info__value">{}</span></li>
+                        <li className="client-info__key">Номер паспорта:  <span className="client-info__value">{}</span></li>
                         <li className="client-info__key">Кем выдан:        <span className="client-info__value">{}</span></li>
                         <li className="client-info__key">Когда выдан:      <span className="client-info__value">{}</span></li>
                     </ul>

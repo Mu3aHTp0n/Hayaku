@@ -15,7 +15,7 @@ function App() {
 				<Routes>
 					{/* TODO: добавить подстановочный путь */}
 					{/* Подстановочный путь. Появлется если ни один из роутов не подходит */}
-					{/*<Route path='*' element={<404 />} />*/}
+					{/* <Route path='*' element={<404 />} /> */}
 					<Route path='Client' element={<ClientPage />} />
 					<Route path='Cassette' element={<CassettePage />} />
 					<Route path='Rental' element={<RentalPage />} />

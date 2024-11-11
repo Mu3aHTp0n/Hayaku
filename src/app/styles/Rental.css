@@ -55,6 +55,7 @@
     border: 2px solid var(--header-bg-color);
     padding: 8px;
     border-radius: 12px;
+    transition: border-radius 315ms ease-in-out;
 }
 .dropdown__title:hover {
     background: color-mix(in oklab, var(--header-bg-color) 35%, white 12%);
@@ -70,7 +71,7 @@
     font-size: 16px;
     font-weight: normal;
     max-height: 0;
-    transition: max-height 500ms ease-in-out;
+    transition: max-height 350ms ease-in-out;
     background-color: var(--light-grey);
     border-radius: 0 0 12px 12px;
 }
@@ -88,6 +89,8 @@
 }
 
 .cassette__title {
+    color: var(--dark-color);
 }
 .cassette__status {
+    color: var(--dark-color);
 }

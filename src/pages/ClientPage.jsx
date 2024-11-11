@@ -1,6 +1,9 @@
 import Window from "../Window.jsx";
 
 import '../app/styles/Client.css'
+import Overlay from "../Overlay.jsx";
+import {useSetAtom} from "jotai";
+import {uiAtom} from "../state.jsx";
 
 export default function ClientPage() {
     const clients = [
@@ -86,20 +89,18 @@ export default function ClientPage() {
             {client.name} {client.secondName}
         </li>
     )
-
+    const setUi = useSetAtom(uiAtom)
     // TODO: получение списка клиентов с бека
 
     return (
         <>
+            <Overlay />
             <Window>
                 <aside className="sidebar">
-                    {/* TODO: TODAY сделать клиента активным при нажатии */}
                     <ul className="client-list">{clientsList}</ul>
                 </aside>
                 <section className="client__info">
                     <ul className="client-info__list">
-                        {/* TODO: TODAY? Сделать вывод данных активного клиента */}
-                        {/*<li className="client-info__key">Фамилия:          <span className="client-info__value">{currentClient.SecondName}</span></li>*/}
                         <li className="client-info__key">Фамилия:          <span className="client-info__value">{clients[0].secondName}</span></li>
                         <li className="client-info__key">Имя:              <span className="client-info__value">{clients[0].name}</span></li>
                         <li className="client-info__key">Отчество:         <span className="client-info__value">{}</span></li>
@@ -112,8 +113,7 @@ export default function ClientPage() {
                     </ul>
                 </section>
                 <section className="interaction">
-                    {/* TODO: TODAY модальное окно для добавления клиента с отправкой на бек */}
-                    <button>Добавить Тайлера</button>
+                    <button onClick={() => setUi((prev) => ({...prev, modal: true}))}>Добавить Тайлера</button>
                     {/* TODO: удаление активного клиента */}
                     <button>Удалить Тайлера</button>
                 </section>

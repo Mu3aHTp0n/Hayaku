@@ -13,7 +13,7 @@ export default function Header() {
             <header className="header">
                 <div className="header__container">
                     <a className="logo-link" onClick={changeTheme}>
-                        <img className="logo" src="assets/logo.jpg" alt="Логотип"/>
+                        <img className="logo" src="../src/assets/logo.jpg" alt="Логотип"/>
                     </a>
                     <nav className="navigation">
                         <ul className="list">

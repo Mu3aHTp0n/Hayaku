@@ -1,38 +1,56 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    --header-bg-color: #BE2162;
+    --light-grey: #d4d4d4;
+    --bg-color: #E1E1E1;
+    --text-color: black;
+    --link-color: #86d4e0;
+    --dark-color: #232323;
+}
+:root[theme="dark"] {
+    --header-bg-color: #5e67e6;
+    --light-grey: #d4d4d4;
+    --bg-color: #353a40;
+    --text-color: #d4d4d4;
+    --link-color: #e1df66;
+    --dark-color: #232323;
 }
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+    /*color: #535bf2;*/
+}
+p, span, div {
+    color: var(--text-color);
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--bg-color);
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto -webkit-focus-ring-color;
 }
 
 .window {
-  width: 1440px;
-  max-height: 500px !important;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
+    width: 1440px;
+    max-height: 500px !important;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
 }

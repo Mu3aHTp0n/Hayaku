@@ -7,7 +7,6 @@
     left: 0;
     top: 0;
     overflow: hidden;
-    display: none;
 }
 .modal-body {
     position: absolute;
@@ -24,9 +23,18 @@
 }
 
 .modal__header{
+    display: flex;
+    justify-content: space-between;
     padding-bottom: 4px;
     border-bottom: 1px solid #5b5b5b;
     margin-bottom: 16px;
+}
+i {
+    cursor: pointer;
+    color: #ff0000;
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
 }
 .modal__content{}
 .modal__footer{

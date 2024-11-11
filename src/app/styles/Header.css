@@ -3,7 +3,7 @@ ul {
 }
 
 .header {
-    background-color: #BE2162;
+    background-color: var(--header-bg-color);
     margin-bottom: 48px;
 }
 .header__container {
@@ -29,12 +29,11 @@ ul {
 }
 .list__item:hover {
     transform: translateY(-2px);
-    transition: transform 200ms;
-    transition: color 100ms;
+    transition: transform 200ms, color 100ms;
 }
 .list__link {
     text-decoration: none;
-    color: #86d4e0;
+    font-weight: bold;
 }
 
 .list__link:hover {

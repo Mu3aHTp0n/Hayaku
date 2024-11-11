@@ -1,8 +1,13 @@
 import '../app/styles/Cassette.css'
+import Overlay from "../Overlay.jsx";
+import {useSetAtom} from "jotai";
+import {uiAtom} from "../state.jsx";
 
 export default function CassettePage() {
+    const setUi = useSetAtom(uiAtom)
     return (
         <>
+            <Overlay />
             <main className="cassetWindow">
                             {/* TODO: вывод списка с кассетами */}
                 <select>
@@ -35,8 +40,12 @@ export default function CassettePage() {
                         <div className="button__container">
                             {/* TODO: Удаление выбранной кассеты */}
                             <button>Удалить кассету</button>
-                            {/* TODO: TODAY модальное окно с добавление изображения */}
-                            <button>Добавить кассету</button>
+                            <button onClick={() => setUi(
+                                (prev) => ({
+                                    ...prev,
+                                    modal: true
+                                })
+                            )}>Добавить кассету</button>
                         </div>
                     </section>
                 </article>

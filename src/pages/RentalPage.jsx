@@ -1,22 +1,24 @@
-import {createPortal} from "react-dom";
 import {useState} from "react";
 
 import '../app/styles/Rental.css'
 
-import Modal from "../Modal.jsx";
 import Window from "../Window.jsx";
 import DropDownMenu from "../DropDownMenu.jsx";
+import Overlay from "../Overlay.jsx";
+import {useSetAtom} from "jotai";
+import {uiAtom} from "../state.jsx";
 
 export default function RentalPage() {
     const [isActive, setIsActive] = useState(null);
+    const setUi = useSetAtom(uiAtom)
 
     function handleClick(i) {
         setIsActive(isActive === i ? null : i);
-    }
 
+    }
     return (
         <>
-            {createPortal(<Modal modalTitle={'Какой-то заголовок'}/>, document.body)}
+            <Overlay />
             <Window>
                 <section className="rental">
                     {/* TODO: получение списка клиентов и прокатов с бека */}
@@ -34,8 +36,12 @@ export default function RentalPage() {
                     </article>
                 </section>
                 <section className="interaction">
-                    {/* TODO: TODAY Модальное окно с добавлением проката */}
-                    <button>Добавить Тайлера</button>
+                    <button onClick={() => setUi(
+                        (prev) => ({
+                            ...prev,
+                            modal: true
+                        })
+                    )}>Добавить Тайлера</button>
                 </section>
             </Window>
         </>

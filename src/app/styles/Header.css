@@ -4,6 +4,7 @@ ul {
 
 .header {
     background-color: var(--header-bg-color);
+    transition: background-color 350ms ease-in-out;
     margin-bottom: 48px;
 }
 .header__container {
@@ -18,6 +19,7 @@ ul {
 }
 .logo {
     width: 92px;
+    cursor: pointer;
 }
 .list {
     list-style: none;

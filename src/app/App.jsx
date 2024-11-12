@@ -10,6 +10,7 @@ import './styles/App.css'
 function App() {
 	return (
 		<>
+			{/* TODO: адаптив */}
 			<Header/>
 			<BrowserRouter>
 				<Routes>

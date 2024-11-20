@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 select {
-    margin-bottom: 24px;
+    margin-bottom: 1.5em;
 }
 
 .cassetWindow > select {
@@ -11,7 +11,7 @@ select {
     width: 1200px;
     padding: 5px;
     border-width: 5px;
-    border-radius: 10px;
+    border-radius: .75em;
     border-color: rgb(55, 92, 99);
     align-self: center;
 }
@@ -19,7 +19,7 @@ select {
 .cassette__content {
     display: flex;
     justify-content: space-between;
-    gap: 36px;
+    gap: 2.5em;
     max-width: 1440px;
     width: 1200px;
     margin: 0 auto;
@@ -35,12 +35,11 @@ select {
     justify-content: space-between;
 }
 .cassette__description {
-    font-size: 20px;
+    font-size: 1.35em;
     line-height: 1.75em;
     flex-grow: 4;
 }
 .button__container {
     display: flex;
     justify-content: space-between;
-    flex-grow: 1;
 }

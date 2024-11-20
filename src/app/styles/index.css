@@ -1,38 +1,157 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    --header-bg-color: #BE2162;
+    --light-grey: #d4d4d4;
+    --bg-color: #E1E1E1;
+    --text-color: black;
+    --link-color: #86d4e0;
+    --dark-color: #232323;
+}
+:root[theme="dark"] {
+    --header-bg-color: #5e67e6;
+    --light-grey: #d4d4d4;
+    --bg-color: #353a40;
+    --text-color: #d4d4d4;
+    --link-color: #e1df66;
+    --dark-color: #232323;
 }
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+    font-weight: 500;
+    color: var(--link-color);
+    text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+    /*color: #535bf2;*/
+}
+p, span, div {
+    color: var(--text-color);
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    transition: background-color 400ms ease-in-out, color 300ms ease-in-out;
+    font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto -webkit-focus-ring-color;
 }
 
 .window {
-  width: 1440px;
-  max-height: 500px;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    max-height: 500px !important;
+    margin: 0 auto;
+    border-radius: 1em;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
+}
+
+@media (width <= 1280px) {
+    body {
+        font-size: 14px;
+    }
+    .header {
+        padding: 0 2em;
+    }
+    select {
+        width: 100% !important;
+    }
+    .cassetWindow {
+        padding: 0 2em;
+    }
+    .cassette__content {
+        width: 100% !important;
+    }
+}
+@media (width <= 1024px) {
+    body {
+        font-size: 12px;
+    }
+    button {
+        width: 200px !important;
+    }
+    .window {
+        min-height: 400px !important;
+    }
+    .logo {
+        width: 72px;
+    }
+    .preview {
+        max-height: 500px !important;
+    }
+}
+@media (width <= 768px) {
+    body {
+        font-size: 9px;
+    }
+    button {
+        max-width: 150px !important;
+        padding: 1.5em;
+    }
+    .window {
+        min-height: 400px !important;
+    }
+    .preview {
+        max-height: 400px !important;
+    }
+    .cassette__description {
+        font-size: 1.5em;
+    }
+    .button__container {
+
+    }
+}
+@media (width <= 480px) {
+    body {
+        font-size: 8px;
+    }
+    button {
+        max-width: 150px !important;
+        padding: 1.5em !important;
+    }
+    button:hover {
+        transform: translateY(-4px) !important;
+    }
+    .logo {
+        width: 64px !important;
+    }
+    .window {
+        min-height: 400px !important;
+        flex-direction: column;
+    }
+    .interaction {
+        flex-direction: row !important;
+    }
+    .client__info {
+        display: flex;
+        align-items: center;
+        margin: 0 !important;
+        font-size: 1.25em;
+    }
+    .cassette__content {
+        flex-direction: column;
+    }
+}
+@media (width <= 320px) {
+    body {
+        font-size: 6px;
+    }
+    .logo {
+        width: 48px !important;
+        margin-right: 1em;
+    }
+    .interaction {
+        flex-direction: column !important;
+    }
 }

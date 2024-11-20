@@ -1,0 +1,59 @@
+.search-form {
+    margin-bottom: 3em;
+}
+
+.search-group {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    width: 40%;
+    margin: 0 auto;
+}
+.search-group:focus-within {
+    border: 3px solid #5e67e6;
+}
+.search-input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 1em;
+}
+.searchIcon {
+    color: #777;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+.searchIcon:hover {
+    color: color-mix(in oklab, #777, black 25%);
+}
+
+.clients {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    background-color: #fff;
+    box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
+    border-radius: .75em;
+    padding: .25em .5em;
+}
+.client-list {
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+.clients-list__item {
+    color: black;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}
+.clients-list__item:hover {
+    background-color: color-mix(in oklab, #fff, black 20%);
+    border-radius: 0.5em;
+}

@@ -3,8 +3,9 @@ ul {
 }
 
 .header {
-    background-color: #BE2162;
-    margin-bottom: 48px;
+    background-color: var(--header-bg-color);
+    transition: background-color 350ms ease-in-out;
+    margin-bottom: 3em;
 }
 .header__container {
     display: flex;
@@ -12,29 +13,30 @@ ul {
     justify-content: space-between;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 12px 0;
+    padding: .75em 0;
 }
 .navigation {
 }
 .logo {
     width: 92px;
+    cursor: pointer;
 }
 .list {
     list-style: none;
     display: flex;
-    gap: 48px;
-    font-size: 28px;
+    gap: 3em;
+    font-size: 1.75em;
 }
 .list__item {
 }
 .list__item:hover {
     transform: translateY(-2px);
-    transition: transform 200ms;
-    transition: color 100ms;
+    transition: transform 200ms, color 100ms;
 }
 .list__link {
     text-decoration: none;
-    color: #86d4e0;
+    font-weight: bold;
+    color: var(--link-color);
 }
 
 .list__link:hover {

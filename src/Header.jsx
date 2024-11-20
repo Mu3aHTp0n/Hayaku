@@ -1,13 +1,19 @@
 import './app/styles/Header.css'
+import useTheme from "./app/providers/ThemeProvider.jsx";
 
 export default function Header() {
     // 死んたい
+    const { theme, setTheme } = useTheme()
+    function changeTheme() {
+        theme === 'light' ? setTheme('dark') : setTheme('light');
+    }
+
     return (
         <>
             <header className="header">
                 <div className="header__container">
-                    <a className="logo-link" href="">
-                        <img className="logo" src="src\assets\logo.jpg" alt="Логотип"/>
+                    <a className="logo-link" onClick={changeTheme}>
+                        <img className="logo" src="../src/assets/logo.jpg" alt="Логотип"/>
                     </a>
                     <nav className="navigation">
                         <ul className="list">

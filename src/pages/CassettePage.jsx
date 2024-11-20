@@ -1,41 +1,42 @@
+import {useState} from "react";
+import {useSetAtom} from "jotai";
+import {uiAtom} from "../state.jsx";
+
+import Header from "../Header.jsx";
+import FilmSearchBar from "../FilmSearchBar.jsx";
+import Overlay from "../Overlay.jsx";
+
 import '../app/styles/Cassette.css'
+import {cassette} from "../services/Cassette.jsx";
 
 export default function CassettePage() {
+    const [filmInfo, setFilmInfo] = useState({
+        name: null,
+        photo: 'src/assets/cassettePhoto/FightClub.jpg',
+        description: null,
+    });
+
+    const setUi = useSetAtom(uiAtom)
+
+    function handleData(filmData) {
+        setFilmInfo(filmData);
+    }
+
     return (
         <>
+            <Overlay title={'Добавление кассеты'} />
+            <Header/>
             <main className="cassetWindow">
-                            {/* TODO: вывод списка с кассетами */}
-                <select>
-                    <option value="Terminator2">Terminator 2</option>
-                    <option value="WALL-E">WALL-E</option>
-                    <option value="One day">One day</option>
-                    <option value="Fight Club">Fight Club</option>
-                    <option value="Ice Age">Ice Age</option>
-                    <option value="Няньки">Няньки</option>
-                    <option value="Эйс Вентура">Эйс Вентура: Розыск домашних животных</option>
-                    <option value="Джуманджи">Джуманджи</option>
-                </select>
+                <FilmSearchBar sendData={handleData}/>
                 <article className="cassette__content">
                             {/* TODO: вывод картинки */}
-                    <img src="https://upload.wikimedia.org/wikipedia/ru/thumb/8/8a/Fight_club.jpg/640px-Fight_club.jpg"
+                    <img src={ filmInfo.photo }
                          alt="Обложка" className="preview"/>
                     <section>
-                            {/* TODO: вывод описания */}
-                        <p className="cassette__description">Сотрудник страховой компании страдает хронической
-                            бессонницей и отчаянно пытается вырваться из мучительно скучной жизни. Однажды в очередной
-                            командировке он встречает некоего Тайлера Дёрдена — харизматического торговца мылом с
-                            извращенной философией. Тайлер уверен, что самосовершенствование — удел слабых, а
-                            единственное, ради чего стоит жить, — саморазрушение.
-                            <br/><br/>
-                            Проходит немного времени, и вот уже новые друзья лупят друг друга почем зря на стоянке перед
-                            баром, и очищающий мордобой доставляет им высшее блаженство. Приобщая других мужчин к
-                            простым радостям физической жестокости, они основывают тайный Бойцовский клуб, который
-                            начинает пользоваться невероятной популярностью.
-                        </p>
+                        <p className="cassette__description">{ filmInfo.description }</p>
                         <div className="button__container">
-                            {/* TODO: Удаление выбранной кассеты */}
-                            <button>Удалить кассету</button>
-                            <button>Добавить кассету</button>
+                            <button onClick={() => cassette.deleteCassette(filmInfo.id)}>Удалить кассету</button>
+                            <button onClick={() => setUi((prev) => ({...prev, modal: true}))} >Добавить кассету</button>
                         </div>
                     </section>
                 </article>

@@ -1,121 +1,57 @@
-import Window from "../Window.jsx";
+import {useSetAtom} from "jotai";
+import {useState} from "react";
+import {uiAtom} from "../state.jsx";
 
 import '../app/styles/Client.css'
 import Overlay from "../Overlay.jsx";
-import {useSetAtom} from "jotai";
-import {uiAtom} from "../state.jsx";
+import Window from "../Window.jsx";
+import SearchBar from "../SearchBar.jsx";
+import Header from "../Header.jsx";
+import {client} from "../services/Client.jsx";
 
 export default function ClientPage() {
-    const clients = [
-        {
-            id: 0,
-            name: "Родик",
-            secondName: "Эщин",
-        },
-        {
-            id: 1,
-            name: "Эрик",
-            secondName: "Родин",
-        },
-        {
-            id: 2,
-            name: "Рощик",
-            secondName: "Эдин",
-        },
-        {
-            id: 3,
-            name: "Рещик",
-            secondName: "Один",
-        },
-        {
-            id: 4,
-            name: "Дощик",
-            secondName: "Рэдин",
-        },
-        {
-            id: 5,
-            name: "Дорик",
-            secondName: "Щинэ",
-        },
-        {
-            id: 6,
-            name: "Дирик",
-            secondName: "Щонэ",
-        },
-        {
-            id: 7,
-            name: "Щинки",
-            secondName: "Эрод",
-        },
-        {
-            id: 8,
-            name: "Ринки",
-            secondName: "Эщод",
-        },
-        {
-            id: 9,
-            name: "Икро",
-            secondName: "Эдщин",
-        },
-        {
-            id: 10,
-            name: "Киро",
-            secondName: "Щинэд",
-        },
-        {
-            id: 11,
-            name: "Дикин",
-            secondName: "Эщор",
-        },
-        {
-            id: 12,
-            name: "Эдрощ",
-            secondName: "Кини",
-        },
-        {
-            id: 13,
-            name: "Одик",
-            secondName: "Эрщин",
-        },
-        {
-            id: 14,
-            name: "Tayler",
-            secondName: "Derden",
-        },
-    ]
+    const [userInfo, setUserInfo] = useState({
+        surname: null,
+        name: null,
+        patronymic: null,
+        phone: null,
+        passportSeries: null,
+        passportNumber: null,
+        issued: null,
+        issuedDate: null,
+    });
 
-    const clientsList = clients.map(client =>
-        <li className="client-list__item" key={client.id}>
-            {client.name} {client.secondName}
-        </li>
-    )
     const setUi = useSetAtom(uiAtom)
-    // TODO: получение списка клиентов с бека
+
+    function handleData(userData) {
+        setUserInfo(userData);
+    }
 
     return (
         <>
-            <Overlay />
+            {/* TODO: добавление клиента */}
+            <Overlay title={'Добавить клиента'}>
+                <h3>Test</h3>
+            </Overlay>
+            <Header/>
+            <SearchBar sendData={handleData} />
             <Window>
-                <aside className="sidebar">
-                    <ul className="client-list">{clientsList}</ul>
-                </aside>
                 <section className="client__info">
                     <ul className="client-info__list">
-                        <li className="client-info__key">Фамилия:          <span className="client-info__value">{clients[0].secondName}</span></li>
-                        <li className="client-info__key">Имя:              <span className="client-info__value">{clients[0].name}</span></li>
-                        <li className="client-info__key">Отчество:         <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Адрес:            <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Домашний телефон: <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Серия паспорта:  <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Номер паспорта:  <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Кем выдан:        <span className="client-info__value">{}</span></li>
-                        <li className="client-info__key">Когда выдан:      <span className="client-info__value">{}</span></li>
+                        <li className="client-info__key">Фамилия:          <span className="client-info__value">{userInfo.surname}</span></li>
+                        <li className="client-info__key">Имя:              <span className="client-info__value">{userInfo.name}</span></li>
+                        <li className="client-info__key">Отчество:         <span className="client-info__value">{userInfo.patronymic}</span></li>
+                        <li className="client-info__key">Домашний телефон: <span className="client-info__value">{userInfo.phone}</span></li>
+                        <li className="client-info__key">Серия паспорта:   <span className="client-info__value">{userInfo.passportSeries}</span></li>
+                        <li className="client-info__key">Номер паспорта:   <span className="client-info__value">{userInfo.passportNumber}</span></li>
+                        <li className="client-info__key">Кем выдан:        <span className="client-info__value">{userInfo.issued}</span></li>
+                        <li className="client-info__key">Когда выдан:      <span className="client-info__value">{userInfo.issuedDate}</span></li>
                     </ul>
                 </section>
                 <section className="interaction">
                     <button onClick={() => setUi((prev) => ({...prev, modal: true}))}>Добавить Тайлера</button>
-                    {/* TODO: удаление активного клиента */}
-                    <button>Удалить Тайлера</button>
+                    {/* TODO: удаление клиента */}
+                    <button onClick={() => client.deleteClient(userInfo.id)}>Удалить Тайлера</button>
                 </section>
             </Window>
         </>

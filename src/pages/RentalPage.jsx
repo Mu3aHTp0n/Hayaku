@@ -2,11 +2,13 @@ import {useState} from "react";
 
 import '../app/styles/Rental.css'
 
+import Search from "../SearchBar.jsx";
 import Window from "../Window.jsx";
 import DropDownMenu from "../DropDownMenu.jsx";
 import Overlay from "../Overlay.jsx";
 import {useSetAtom} from "jotai";
 import {uiAtom} from "../state.jsx";
+import Header from "../Header.jsx";
 
 export default function RentalPage() {
     const [isActive, setIsActive] = useState(null);
@@ -18,7 +20,9 @@ export default function RentalPage() {
 
     return (
         <>
-            <Overlay />
+            <Overlay title={'Добавление проката'}/>
+            <Header/>
+            <Search />
             <Window>
                 <section className="rental">
                     {/* TODO: получение списка клиентов и прокатов с бека */}

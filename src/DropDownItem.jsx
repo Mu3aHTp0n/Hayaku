@@ -1,9 +1,12 @@
-import './app/styles/Rental.css'
 import {useState} from "react";
+import { rental } from './services/Rental.jsx'
+
+import './app/styles/Rental.css'
 
 export default function DropDownItem() {
     function handleClick() {
         status === "Активно" ? changeStatus("Вернул") : changeStatus("Активно")
+        rental.changeStatus()
     }
     const [status, changeStatus] = useState("Активно")
 

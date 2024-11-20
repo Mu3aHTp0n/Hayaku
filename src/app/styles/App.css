@@ -6,9 +6,10 @@ button {
   width: 250px;
   border: none;
   cursor: pointer;
-  padding: 28px;
-  border-radius: 8px;
-  font-size: 20px;
+  padding: 1.75em;
+  border-radius: .5em;
+  font-size: 1.25em;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 button:hover {
   background-color: color-mix(in oklab, #d4d4d4, black 12%);

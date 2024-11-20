@@ -1,0 +1,38 @@
+.page404 {
+    min-height: 100svh;
+    height: 100%;
+    background-color: #0C091E;
+}
+.stars {
+    min-height: 100svh;
+    height: 100%;
+    background: url("src/assets/Stars.png") repeat center center fixed;
+    position: relative;
+}
+
+.page404-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.page404-container-left {
+
+}
+.page404-container-right {
+
+}
+
+.page404-content {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    text-align: center;
+}
+h2 {
+    margin-bottom: 3em;
+}

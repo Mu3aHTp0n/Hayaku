@@ -39,6 +39,7 @@ body {
     min-height: 100vh;
     background-color: var(--bg-color);
     transition: background-color 400ms ease-in-out, color 300ms ease-in-out;
+    font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 button:focus,
@@ -47,11 +48,110 @@ button:focus-visible {
 }
 
 .window {
-    width: 1440px;
+    width: 80%;
     max-height: 500px !important;
     margin: 0 auto;
-    border-radius: 16px;
+    border-radius: 1em;
     overflow: hidden;
     display: flex;
     box-shadow: 0 0 18px 9px rgba(0, 0, 0, 0.15);
+}
+
+@media (width <= 1280px) {
+    body {
+        font-size: 14px;
+    }
+    .header {
+        padding: 0 2em;
+    }
+    select {
+        width: 100% !important;
+    }
+    .cassetWindow {
+        padding: 0 2em;
+    }
+    .cassette__content {
+        width: 100% !important;
+    }
+}
+@media (width <= 1024px) {
+    body {
+        font-size: 12px;
+    }
+    button {
+        width: 200px !important;
+    }
+    .window {
+        min-height: 400px !important;
+    }
+    .logo {
+        width: 72px;
+    }
+    .preview {
+        max-height: 500px !important;
+    }
+}
+@media (width <= 768px) {
+    body {
+        font-size: 9px;
+    }
+    button {
+        max-width: 150px !important;
+        padding: 1.5em;
+    }
+    .window {
+        min-height: 400px !important;
+    }
+    .preview {
+        max-height: 400px !important;
+    }
+    .cassette__description {
+        font-size: 1.5em;
+    }
+    .button__container {
+
+    }
+}
+@media (width <= 480px) {
+    body {
+        font-size: 8px;
+    }
+    button {
+        max-width: 150px !important;
+        padding: 1.5em !important;
+    }
+    button:hover {
+        transform: translateY(-4px) !important;
+    }
+    .logo {
+        width: 64px !important;
+    }
+    .window {
+        min-height: 400px !important;
+        flex-direction: column;
+    }
+    .interaction {
+        flex-direction: row !important;
+    }
+    .client__info {
+        display: flex;
+        align-items: center;
+        margin: 0 !important;
+        font-size: 1.25em;
+    }
+    .cassette__content {
+        flex-direction: column;
+    }
+}
+@media (width <= 320px) {
+    body {
+        font-size: 6px;
+    }
+    .logo {
+        width: 48px !important;
+        margin-right: 1em;
+    }
+    .interaction {
+        flex-direction: column !important;
+    }
 }

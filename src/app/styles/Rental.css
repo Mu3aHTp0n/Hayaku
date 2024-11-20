@@ -14,11 +14,11 @@
 .rental-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75em 1.5em;
 }
 .rental__client {
-    font-size: 1.25rem;
-    padding-top: 0.25rem;
+    font-size: 1.25em;
+    padding-top: 0.25em;
 }
 
 .dropdown {
@@ -26,8 +26,8 @@
 }
 .dropdown-arrow {
     position: absolute;
-    top: 12px;
-    left: -12px;
+    top: .75em;
+    left: -.75em;
 }
 .dropdown__title::before {
     content: '';
@@ -53,8 +53,8 @@
     color: var(--header-bg-color);
     cursor: pointer;
     border: 2px solid var(--header-bg-color);
-    padding: 8px;
-    border-radius: 12px;
+    padding: .5em;
+    border-radius: .75em;
     transition: border-radius 315ms ease-in-out;
 }
 .dropdown__title:hover {
@@ -63,22 +63,22 @@
 .dropdown__title.active {
     background: color-mix(in oklab, var(--header-bg-color) 50%, black 0%);
     transition: border-radius 150ms ease-in-out;
-    border-radius: 12px 12px 0 0;
+    border-radius: .75em .75em 0 0;
 }
 .dropdown__body {
     overflow: hidden;
     z-index: 1;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: normal;
     max-height: 0;
     transition: max-height 350ms ease-in-out;
     background-color: var(--light-grey);
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 .75em .75em;
 }
 .dropdown__item {
     display: flex;
     justify-content: space-between;
-    padding: 8px;
+    padding: .5em;
     cursor: pointer;
 }
 .dropdown__item:hover {

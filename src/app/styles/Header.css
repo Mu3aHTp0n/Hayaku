@@ -5,7 +5,7 @@ ul {
 .header {
     background-color: var(--header-bg-color);
     transition: background-color 350ms ease-in-out;
-    margin-bottom: 48px;
+    margin-bottom: 3em;
 }
 .header__container {
     display: flex;
@@ -13,7 +13,7 @@ ul {
     justify-content: space-between;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 12px 0;
+    padding: .75em 0;
 }
 .navigation {
 }
@@ -24,8 +24,8 @@ ul {
 .list {
     list-style: none;
     display: flex;
-    gap: 48px;
-    font-size: 28px;
+    gap: 3em;
+    font-size: 1.75em;
 }
 .list__item {
 }

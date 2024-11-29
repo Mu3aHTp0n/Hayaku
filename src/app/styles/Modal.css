@@ -17,7 +17,8 @@
     min-width: 400px;
     min-height: 200px;
 
-    background-color: #fff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     border-radius: 1em;
     padding: 1em .5em;
 }
@@ -36,11 +37,28 @@ i {
     display: flex;
     align-items: center;
 }
-.modal__content{}
+.modal__content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+input {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: none;
+}
 .modal__footer{
     min-height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
-.modal__footer > button {
-    height: 100%;
-    width: 72px;
+.form__button {
+    background-color: var(--header-bg-color);
+    color: #fff;
+    font-size: 1em;
+    height: 3em;
+}
+.form__button:hover {
+    background-color: color-mix(in oklab, var(--header-bg-color), 25% var(--text-color));
 }

@@ -2,7 +2,7 @@ import './app/styles/Header.css'
 import useTheme from "./app/providers/ThemeProvider.jsx";
 
 export default function Header() {
-    // 死んたい
+    // 死にたい
     const { theme, setTheme } = useTheme()
     function changeTheme() {
         theme === 'light' ? setTheme('dark') : setTheme('light');

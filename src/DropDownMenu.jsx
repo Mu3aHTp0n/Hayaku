@@ -1,10 +1,9 @@
-
 import './app/styles/Rental.css'
 import DropDownItem from "./DropDownItem.jsx";
 
 export default function DropDownMenu({active, onMenuClick}) {
     // function handleMenu() {
-        //     Получение списка прокатов
+    //     Получение списка прокатов
     // }
 
     return (

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import '../app/styles/Rental.css'
 
@@ -18,18 +18,36 @@ export default function RentalPage() {
     const [clientId, setClientId] = useState();
     const [cassetteId, setCassetteId] = useState();
 
-    const [username, setUsername] = useState()
     const [rentalInfo, setRentalInfo] = useState()
+    const [username, setUsername] = useState('')
 
     function handleData(rentalData) {
-        setRentalInfo(rentalData)
+        setRentalInfo(rentalData);
     }
+
+    useEffect(() => {
+        if (rentalInfo) {
+            console.log("Обновленная информация о ренте: ", rentalInfo);
+        }
+    }, [rentalInfo]);
 
     function handleClick(i) {
         setIsActive(isActive === i ? null : i);
     }
     function addRental() {
         rental.addRental(clientId, cassetteId);
+    }
+    function getUsername(username) {
+        setUsername(username);
+    }
+    function checkInfo() {
+        console.log("Информация о прокатах: ", rentalInfo);
+    }
+    function changeClientId(clieId) {
+        setClientId(clieId);
+    }
+    function changeCassetteId(cassId) {
+        setCassetteId(cassId);
     }
 
     return (
@@ -38,20 +56,21 @@ export default function RentalPage() {
                 <>
                 </>
             }>
+                <Search sendClientId={changeClientId} currentPage={'rentalModalClient'} />
                 <input type='text' placeholder={'id Клиента'}
                        value={clientId} onChange={event => setClientId(event.target.value)} required/>
+                <Search sendCassetteId={changeCassetteId} currentPage={'rentalModalCassette'} />
                 <input type='text' placeholder={'id Кассеты'}
                        value={cassetteId} onChange={event => setCassetteId(event.target.value)} required/>
                 <input type={"submit"} className={'form__button'} value={"Submit"} onClick={() => addRental()}/>
             </Overlay>
             <Header/>
-            <Search sendRentalData={handleData} currentPage={'rental'}/>
+            <Search sendData={handleData} sendUsername={getUsername} currentPage={'rental'} />
             <Window>
                 <section className="rental">
-                    {/* TODO: получение списка клиентов и прокатов с бека */}
                     <article className="rental-item">
-                        <p className="rental__client">{username}</p>
-                        <DropDownMenu active={isActive === 0} onMenuClick={() => handleClick(0)} />
+                        <p className="rental__client" onClick={checkInfo}>{ username }</p>
+                        { username !== '' && <DropDownMenu active={isActive === 0} onMenuClick={() => handleClick(0)} rentalInformation={rentalInfo} /> }
                     </article>
                 </section>
                 <section className="interaction">

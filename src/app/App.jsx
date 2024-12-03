@@ -13,11 +13,11 @@ function App() {
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path='*' element={<Page404 />} />
-					<Route path='/' element={<HomePage />} />
-					<Route path='Client' element={<ClientPage />} />
+					<Route path='*'        element={<Page404 />} />
+					<Route path='/'        element={<HomePage />} />
+					<Route path='Client'   element={<ClientPage />} />
 					<Route path='Cassette' element={<CassettePage />} />
-					<Route path='Rental' element={<RentalPage />} />
+					<Route path='Rental'   element={<RentalPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>

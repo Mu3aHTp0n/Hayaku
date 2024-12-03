@@ -3,20 +3,18 @@ import axios from "axios";
 class Client {
     getClient(clientId) {
         return axios
-            .get(`http://localhost:5174/demo/client/${clientId}`)
+            .get(`http://130.193.44.220:5174/demo/client/${clientId}`)
             .then((response) => {
-                console.log(response)
                 return response.data;
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
             })
     }
     deleteClient(clientId) {
         axios
             .delete(`http://130.193.44.220:5174/demo/client/${clientId}`)
             .then((response) => {
-                console.log(response)
                 response.status === 200 ? alert('Клиент успешно удалён') : null
             })
             .catch(error => {

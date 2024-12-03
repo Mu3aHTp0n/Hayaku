@@ -1,8 +1,4 @@
 import axios from 'axios';
-import {useState} from "react";
-
-// const [imageUrl, setImageUrl] = useState('');
-let imageUrl = null;
 
 class Cassette {
 
@@ -10,26 +6,10 @@ class Cassette {
          return axios
             .get(`http://130.193.44.220:5174/demo/cassette/${cassetteId}`)
             .then((response) => {
-                // console.log(response.data);
                 return response.data;
             })
             .catch(error => {
                 console.log(error)
-            })
-    }
-    getCassettePhoto(cassetteId) {
-        return axios
-            .get(`http://130.193.44.220:5174/demo/cassette/getPhoto/${cassetteId}`)
-            .then((response) => {
-                const blob = response.blob();                 // Преобразуем ответ в Blob
-                const url = URL.createObjectURL(blob); // Создаем объект URL из Blob
-                // setImageUrl(url);                          // Устанавливаем URL в состояние
-                imageUrl = url;
-                console.log(imageUrl);
-                return imageUrl;
-            })
-            .catch(error => {
-                console.log(error);
             })
     }
     async deleteCassette(cassetteId) {
@@ -58,7 +38,7 @@ class Cassette {
             return response.data;
         } catch (error) {
             console.error('Error uploading data:', error);
-            throw error; // Пробрасываем ошибку дальше, если нужно
+            throw error;
         }
     }
 }

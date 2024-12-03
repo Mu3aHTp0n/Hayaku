@@ -13,7 +13,7 @@ export default function CassettePage() {
     const [title, setTitle] = useState();
     const [desc, setDesk] = useState();
     const [file, setFile] = useState(null)
-    const [urlImg, setUrlImg] = useState(null);
+    const [urlImg, setUrlImg] = useState("");
 
     const [filmInfo, setFilmInfo] = useState({
         name: null,
@@ -24,9 +24,7 @@ export default function CassettePage() {
 
     function handleData(filmData) {
         setFilmInfo(filmData);
-        console.log(filmInfo)
-        let tempUrl = cassette.getCassettePhoto(filmData.id);
-        setUrlImg(tempUrl);
+        setUrlImg(`http://130.193.44.220:5174/demo/cassette/getPhoto/${filmData.id}`);
     }
 
     async function createCassette() {
@@ -54,11 +52,11 @@ export default function CassettePage() {
             <main className="cassetWindow">
                 <Search sendData={handleData} currentPage={'cassette'}/>
                 <article className="cassette__content">
-                    {/* TODO: вывод картинки */}
-                    <img src={urlImg}
-                         alt="" className="preview"/>
-                    <section>
-                        <p className="cassette__description">{ filmInfo.description }</p>
+                    {/*{filmInfo.name !== null && <img src={urlImg} alt={`${filmInfo.name}`} className="preview"/>}*/}
+                    <img className={'preview'} src={urlImg} alt={'Bebebe'} />
+                        <section>
+                        <h3 style={{fontSize: '1.5em'}}>{filmInfo.name}</h3>
+                        <p className="cassette__description">{filmInfo.description}</p>
                         <div className="button__container">
                             {
                                 filmInfo.name !== null && (
@@ -67,7 +65,7 @@ export default function CassettePage() {
                                     </>
                                 )
                             }
-                            <button onClick={() => setUi((prev) => ({...prev, modal: true}))} >Добавить кассету</button>
+                            <button onClick={() => setUi((prev) => ({...prev, modal: true}))}>Добавить кассету</button>
                         </div>
                     </section>
                 </article>

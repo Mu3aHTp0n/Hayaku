@@ -1,5 +1,5 @@
 .search-form {
-    margin-bottom: 3em;
+    /*margin-bottom: 3em;*/
 }
 
 .search-group {
@@ -43,6 +43,7 @@
     border-radius: 0 0 .75em .75em;
     border-top: 2px solid var(--header-bg-color);
     padding: .25em .5em;
+    z-index: 6;
 }
 .client-list {
     display: flex;

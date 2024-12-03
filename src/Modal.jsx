@@ -5,7 +5,8 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import {uiAtom} from "./state.jsx";
 import './app/styles/Modal.css'
 
-export default function Modal({modalTitle = 'Заголовок модального окна', children, footerContent}) {
+export default function Modal({modalTitle = 'Заголовок модального окна', children}) {
+
     const setUi = useSetAtom(uiAtom);
     return (
         <>
@@ -29,12 +30,7 @@ export default function Modal({modalTitle = 'Заголовок модально
                             <FontAwesomeIcon icon={faXmark} />
                         </i>
                     </header>
-                    <main className={`modal__content`}>
-
-                    </main>
-                    <footer className={`modal__footer`}>
-
-                    </footer>
+                    {children}
                 </section>
             </article>
         </>

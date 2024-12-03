@@ -3,27 +3,32 @@ import axios from 'axios';
 class Rental {
     changeStatus(statusId) {
         axios
-            .put(`https://localhost:5174/demo/rental/${statusId}`)
+            .put(`http://130.193.44.220:5174/demo/rental/${statusId}`)
             .then(response => {
                 console.log(response);
             })
             .catch(error => {
-                console.log(error)
+                console.log(error);
             })
     }
-    getRentals(rentalId) {
-        axios
-            .get(`https://localhost:5174/demo/rental${rentalId}`)
-            .catch(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    async getRentals(rentalId) {
+        try {
+            const response = await axios.get(`http://130.193.44.220:5174/demo/rental/${rentalId}`);
+            return response.data;
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                alert('Прокат пуст');
+                return null;
+            }
+            throw error; // Обработка других ошибок
+        }
     }
-    addRental() {
+    async addRental(clientId, cassetteId) {
         axios
-            .post(`https://localhost:5174/demo/rental/`)
+            .post('http://130.193.44.220:5174/demo/rental', {
+                clientId: clientId,
+                cassetteId: cassetteId,
+            })
             .then(response => {
                 console.log(response);
             })

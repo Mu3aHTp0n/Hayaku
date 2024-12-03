@@ -9,9 +9,14 @@ export default function Overlay({title, children, footerContent}) {
         createPortal(
             <>
                 {ui.modal &&
-                <Modal modalTitle={title}>
-                    {children}
-                </Modal>}
+                    <Modal modalTitle={title}>
+                        <form className={'modal__content'} onClick={event => event.preventDefault()}>
+                            {children}
+                        </form>
+                        {/*<footer className={`modal__footer`}>*/}
+                        {/*    {footerContent}*/}
+                        {/*</footer>*/}
+                    </Modal>}
             </>,
             document.body
         )

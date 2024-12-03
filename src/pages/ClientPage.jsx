@@ -5,11 +5,20 @@ import {uiAtom} from "../state.jsx";
 import '../app/styles/Client.css'
 import Overlay from "../Overlay.jsx";
 import Window from "../Window.jsx";
-import SearchBar from "../SearchBar.jsx";
+import Search from "../SearchBar.jsx";
 import Header from "../Header.jsx";
 import {client} from "../services/Client.jsx";
 
 export default function ClientPage() {
+    const [surnameValue, setSurnameValue] = useState()
+    const [nameValue, setNameValue] = useState()
+    const [patronymicValue, setPatronymicValue] = useState()
+    const [phoneValue, setPhoneValue] = useState()
+    const [passportSeriesValue, setPassportSeriesValue] = useState()
+    const [passportNumberValue, setPassportNumberValue] = useState()
+    const [issuedValue, setIssuedValue] = useState()
+    const [issuedDateValue, setIssuedDateValue] = useState()
+
     const [userInfo, setUserInfo] = useState({
         surname: null,
         name: null,
@@ -27,14 +36,40 @@ export default function ClientPage() {
         setUserInfo(userData);
     }
 
+    function createClient() {
+        client.createClient(surnameValue, nameValue, patronymicValue, phoneValue, passportSeriesValue, passportNumberValue, issuedValue, issuedDateValue)
+    }
+
     return (
         <>
-            {/* TODO: добавление клиента */}
-            <Overlay title={'Добавить клиента'}>
-                <h3>Test</h3>
+            <Overlay title={'Добавить клиента'} footerContent={
+                <>
+                </>
+            }>
+                <input type='text' placeholder={'Фамилия'}
+                       value={surnameValue} onChange={event => setSurnameValue(event.target.value)} required={true}/>
+                <input type='text' placeholder={'Имя'}
+                       value={nameValue} onChange={event => setNameValue(event.target.value)} required={true}/>
+                <input type='text' placeholder={'Отчество'}
+                       value={patronymicValue} onChange={event => setPatronymicValue(event.target.value)}
+                       required={true}/>
+                <input type='tel' placeholder={'79536673978'} pattern="[0-9]{7,12}" maxLength={12}
+                       value={phoneValue} onChange={event => setPhoneValue(event.target.value)} required={true}/>
+                <input type='number' placeholder={'Серия паспорта'} min={1000} max={9999}
+                       value={passportSeriesValue} onChange={event => setPassportSeriesValue(event.target.value)}
+                       required={true}/>
+                <input type='number' placeholder={'Номер паспорта'} min={100000} max={999999}
+                       value={passportNumberValue} onChange={event => setPassportNumberValue(event.target.value)}
+                       required={true}/>
+                <input type='text' placeholder={'Кем выдан'}
+                       value={issuedValue} onChange={event => setIssuedValue(event.target.value)} required={true}/>
+                <input type='text' placeholder={'Когда выдан: гггг-мм-дд'} pattern={"[0-9]{4}-[0-9]{2}-[0-9]{2}"}
+                       value={issuedDateValue} onChange={event => setIssuedDateValue(event.target.value)}
+                       required/>
+                <input type={'submit'} className={'form__button'} value={'Submit'} onClick={createClient}/>
             </Overlay>
             <Header/>
-            <SearchBar sendData={handleData} />
+            <Search sendData={handleData} currentPage={'client'} />
             <Window>
                 <section className="client__info">
                     <ul className="client-info__list">
@@ -50,7 +85,6 @@ export default function ClientPage() {
                 </section>
                 <section className="interaction">
                     <button onClick={() => setUi((prev) => ({...prev, modal: true}))}>Добавить Тайлера</button>
-                    {/* TODO: удаление клиента */}
                     <button onClick={() => client.deleteClient(userInfo.id)}>Удалить Тайлера</button>
                 </section>
             </Window>

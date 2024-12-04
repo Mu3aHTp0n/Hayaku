@@ -1,5 +1,6 @@
 import './app/styles/Header.css'
 import useTheme from "./app/providers/ThemeProvider.jsx";
+import {Link} from "react-router-dom";
 
 export default function Header() {
     // 死にたい
@@ -18,13 +19,13 @@ export default function Header() {
                     <nav className="navigation">
                         <ul className="list">
                             <li className="list__item">
-                                <a href="/Client" className="list__link">Клиенты</a>
+                                <Link to="/Client" className="list__link">Клиенты</Link>
                             </li>
                             <li className="list__item">
-                                <a href="/Cassette" className="list__link">Видеокассеты</a>
+                                <Link to="/Cassette" className="list__link">Видеокассеты</Link>
                             </li>
                             <li className="list__item">
-                                <a href="/Rental" className="list__link">Прокаты</a>
+                                <Link to="/Rental" className="list__link">Прокаты</Link>
                             </li>
                         </ul>
                     </nav>

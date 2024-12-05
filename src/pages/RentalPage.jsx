@@ -27,7 +27,7 @@ export default function RentalPage() {
 
     useEffect(() => {
         if (rentalInfo) {
-            console.log("Обновленная информация о ренте: ", rentalInfo);
+            // console.log("Обновленная информация о ренте: ", rentalInfo);
         }
     }, [rentalInfo]);
 

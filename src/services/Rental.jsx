@@ -3,7 +3,7 @@ import axios from 'axios';
 class Rental {
     changeStatus(statusId) {
         axios
-            .put(`http://130.193.44.220:5174/demo/rental/${statusId}`)
+            .put(`https://hayaku.ru/demo/rental/${statusId}`)
             .then(response => {
                 console.log(response);
             })
@@ -13,7 +13,7 @@ class Rental {
     }
     async getRentals(rentalId) {
         try {
-            const response = await axios.get(`http://130.193.44.220:5174/demo/rental/${rentalId}`);
+            const response = await axios.get(`https://hayaku.ru/demo/rental/${rentalId}`);
             return response.data;
         } catch (error) {
             if (error.response && error.response.status === 404) {
@@ -25,12 +25,12 @@ class Rental {
     }
     async addRental(clientId, cassetteId) {
         axios
-            .post('http://130.193.44.220:5174/demo/rental', {
+            .post('https://hayaku.ru/demo/rental', {
                 clientId: clientId,
                 cassetteId: cassetteId,
             })
-            .then(response => {
-                console.log(response);
+            .then(() => {
+                console.log('Прокат успешно добавлен');
             })
             .catch(error => {
                 console.log(error)

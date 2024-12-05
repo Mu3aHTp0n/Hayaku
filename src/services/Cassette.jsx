@@ -4,7 +4,7 @@ class Cassette {
 
     getCassette(cassetteId) {
          return axios
-            .get(`http://130.193.44.220:5174/demo/cassette/${cassetteId}`)
+            .get(`https://hayaku.ru/demo/cassette/${cassetteId}`)
             .then((response) => {
                 return response.data;
             })
@@ -14,7 +14,7 @@ class Cassette {
     }
     async deleteCassette(cassetteId) {
         await axios
-            .delete(`http://130.193.44.220:5174/demo/cassette/${cassetteId}`)
+            .delete(`https://hayaku.ru/demo/cassette/${cassetteId}`)
             .then(response => {
                 console.log(response);
             })
@@ -29,12 +29,12 @@ class Cassette {
         formData.append('file', file);
         console.log('Отправляемые данные: ', formData)
         try {
-            const response = await axios.post('http://130.193.44.220:5174/demo/cassette', formData, {
+            const response = await axios.post('https://hayaku.ru/demo/cassette', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log('Success:', response.data);
+            console.log('Success');
             return response.data;
         } catch (error) {
             console.error('Error uploading data:', error);

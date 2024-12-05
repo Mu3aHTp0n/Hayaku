@@ -24,7 +24,7 @@ export default function CassettePage() {
 
     function handleData(filmData) {
         setFilmInfo(filmData);
-        setUrlImg(`http://130.193.44.220:5174/demo/cassette/getPhoto/${filmData.id}`);
+        setUrlImg(`https://hayaku.ru/demo/cassette/getPhoto/${filmData.id}`);
     }
 
     async function createCassette() {

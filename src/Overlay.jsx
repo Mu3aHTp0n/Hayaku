@@ -3,19 +3,16 @@ import { useAtomValue } from "jotai";
 import Modal from "./Modal.jsx"
 import {uiAtom} from "./state.jsx";
 
-export default function Overlay({title, children, footerContent}) {
+export default function Overlay({title, children}) {
     const ui = useAtomValue(uiAtom)
     return (
         createPortal(
             <>
                 {ui.modal &&
                     <Modal modalTitle={title}>
-                        <form className={'modal__content'} onClick={event => event.preventDefault()}>
+                        <form className={'modal__content'} onSubmit={event => event.preventDefault()}>
                             {children}
                         </form>
-                        {/*<footer className={`modal__footer`}>*/}
-                        {/*    {footerContent}*/}
-                        {/*</footer>*/}
                     </Modal>}
             </>,
             document.body

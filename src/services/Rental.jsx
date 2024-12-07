@@ -4,9 +4,6 @@ class Rental {
     changeStatus(statusId) {
         axios
             .put(`https://hayaku.ru/demo/rental/${statusId}`)
-            .then(response => {
-                console.log(response);
-            })
             .catch(error => {
                 console.log(error);
             })

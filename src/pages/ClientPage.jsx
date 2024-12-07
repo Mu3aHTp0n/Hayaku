@@ -19,7 +19,7 @@ export default function ClientPage() {
     const [passportSeriesValue, setPassportSeriesValue] = useState('')
     const [passportNumberValue, setPassportNumberValue] = useState('')
     const [issuedValue, setIssuedValue] = useState('')
-    const [issuedDateValue, setIssuedDateValue] = useState(`${date.toISOString().slice(0, 10)}`)
+    const [issuedDateValue, setIssuedDateValue] = useState(``)
 
     const [userInfo, setUserInfo] = useState({
         surname: null,
@@ -31,7 +31,6 @@ export default function ClientPage() {
         issued: null,
         issuedDate: null,
     });
-
     const setUi = useSetAtom(uiAtom)
 
     function handleData(userData) {
@@ -40,6 +39,16 @@ export default function ClientPage() {
 
     function createClient() {
         client.createClient(surnameValue, nameValue, patronymicValue, phoneValue, passportSeriesValue, passportNumberValue, issuedValue, issuedDateValue)
+            .then(() => {
+                setSurnameValue('');
+                setNameValue('');
+                setPatronymicValue('');
+                setPhoneValue('');
+                setPassportSeriesValue('');
+                setPassportNumberValue('');
+                setIssuedValue('');
+                setIssuedDateValue('');
+            })
     }
 
     return (

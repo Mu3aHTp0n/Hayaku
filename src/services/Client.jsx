@@ -35,11 +35,10 @@ class Client {
             })
             .then(() => {
                 console.log("Клиент успешно добавлен")
-
             })
-            // .catch(error => {
-            //     console.error(error);
-            // })
+            .catch(error => {
+                console.error(error);
+            })
     }
 }
 

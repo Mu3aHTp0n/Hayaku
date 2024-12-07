@@ -10,10 +10,11 @@ import '../app/styles/Cassette.css'
 import {cassette} from "../services/Cassette.jsx";
 
 export default function CassettePage() {
-    const [title, setTitle] = useState();
-    const [desc, setDesk] = useState();
+    const [title, setTitle] = useState('');
+    const [desc, setDesk] = useState('');
     const [file, setFile] = useState(null)
     const [urlImg, setUrlImg] = useState("");
+    const [tempUrl, setTempUrl] = useState('')
 
     const [filmInfo, setFilmInfo] = useState({
         name: null,
@@ -27,33 +28,50 @@ export default function CassettePage() {
         setUrlImg(`https://hayaku.ru/demo/cassette/getPhoto/${filmData.id}`);
     }
 
+    function deleteCassette() {
+        cassette.deleteCassette(filmInfo.id)
+            .then(() => {
+                setFilmInfo({
+                    name: null,
+                    description: null,
+                });
+                setUrlImg('')
+            })
+    }
+
     async function createCassette() {
         await cassette.createCassette({ title, desc, file });
         setTitle('');
         setDesk('');
         setFile(null)
+        setTempUrl('')
+    }
+
+    function handleFileChange(event) {
+        const selectedFile = event.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
+            setTempUrl(URL.createObjectURL(selectedFile));
+        }
     }
 
     return (
         <>
-            <Overlay title={'Добавление кассеты'} footerContent={
-                <>
-                </>
-            }>
+            <Overlay title={'Добавление кассеты'}>
                 <input type='text' placeholder={'Название'}
                        value={title} onChange={event => setTitle(event.target.value)} required/>
                 <input type='text' placeholder={'Описание'}
                        value={desc} onChange={event => setDesk(event.target.value)} required/>
+                {tempUrl && <img alt='' src={tempUrl} style={{maxHeight: 600}}/>}
                 <input type='file' accept="image/*"
-                       onChange={(e) => setFile(e.target.files[0])} required/>
-                <input type={"submit"} className={'form__button'} value={"Submit"} onClick={() => createCassette()}/>
+                       onChange={handleFileChange} required/>
+                <button className={'form__button'} onClick={() => createCassette()}>Добавить</button>
             </Overlay>
             <Header/>
             <main className="cassetWindow">
-                <Search sendData={handleData} currentPage={'cassette'}/>
+            <Search sendData={handleData} currentPage={'cassette'}/>
                 <article className="cassette__content">
-                    {/*{filmInfo.name !== null && <img src={urlImg} alt={`${filmInfo.name}`} className="preview"/>}*/}
-                    <img className={'preview'} src={urlImg} alt={'Bebebe'} />
+                    { urlImg && <img className={'preview'} src={urlImg} alt={'Bebebe'} /> }
                         <section>
                         <h3 style={{fontSize: '1.5em'}}>{filmInfo.name}</h3>
                         <p className="cassette__description">{filmInfo.description}</p>
@@ -61,7 +79,7 @@ export default function CassettePage() {
                             {
                                 filmInfo.name !== null && (
                                     <>
-                                        <button onClick={() => cassette.deleteCassette(filmInfo.id)}>Удалить кассету</button>
+                                        <button onClick={deleteCassette}>Удалить кассету</button>
                                     </>
                                 )
                             }

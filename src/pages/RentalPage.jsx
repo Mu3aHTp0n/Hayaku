@@ -1,4 +1,6 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import {useSetAtom} from "jotai";
+import {uiAtom} from "../state.jsx";
 
 import '../app/styles/Rental.css'
 
@@ -6,8 +8,6 @@ import Search from "../SearchBar.jsx";
 import Window from "../Window.jsx";
 import DropDownMenu from "../DropDownMenu.jsx";
 import Overlay from "../Overlay.jsx";
-import {useSetAtom} from "jotai";
-import {uiAtom} from "../state.jsx";
 import Header from "../Header.jsx";
 import {rental} from "../services/Rental.jsx";
 
@@ -15,8 +15,8 @@ export default function RentalPage() {
     const [isActive, setIsActive] = useState(null);
     const setUi = useSetAtom(uiAtom)
 
-    const [clientId, setClientId] = useState();
-    const [cassetteId, setCassetteId] = useState();
+    const [client, setClient] = useState({});
+    const [cassette, setCassette] = useState({});
 
     const [rentalInfo, setRentalInfo] = useState()
     const [username, setUsername] = useState('')
@@ -25,17 +25,15 @@ export default function RentalPage() {
         setRentalInfo(rentalData);
     }
 
-    useEffect(() => {
-        if (rentalInfo) {
-            console.log("Обновленная информация о ренте: ", rentalInfo);
-        }
-    }, [rentalInfo]);
-
     function handleClick(i) {
         setIsActive(isActive === i ? null : i);
     }
     function addRental() {
-        rental.addRental(clientId, cassetteId);
+        rental.addRental(client.id, cassette.cassetteId)
+            .then(() => {
+                setClient({});
+                setCassette({});
+            });
     }
     function getUsername(username) {
         setUsername(username);
@@ -44,25 +42,24 @@ export default function RentalPage() {
         console.log("Информация о прокатах: ", rentalInfo);
     }
     function changeClientId(clieId) {
-        setClientId(clieId);
+        setClient(clieId);
     }
     function changeCassetteId(cassId) {
-        setCassetteId(cassId);
+        setCassette(cassId);
     }
 
     return (
         <>
-            <Overlay title={'Добавление проката'} footerContent={
-                <>
-                </>
-            }>
+            <Overlay title={'Добавление проката'}>
                 <Search sendClientId={changeClientId} currentPage={'rentalModalClient'} />
-                <input type='text' placeholder={'id Клиента'}
-                       value={clientId} onChange={event => setClientId(event.target.value)} required/>
+                { client.name && <p>{client.surname + " " + client.name + " " + client.patronymic}</p> }
+                <input className='hiden' type='text' placeholder={'id Клиента'}
+                       value={client.id} onChange={event => setClient(event.target.value)} required/>
                 <Search sendCassetteId={changeCassetteId} currentPage={'rentalModalCassette'} />
-                <input type='text' placeholder={'id Кассеты'}
-                       value={cassetteId} onChange={event => setCassetteId(event.target.value)} required/>
-                <input type={"submit"} className={'form__button'} value={"Submit"} onClick={() => addRental()}/>
+                { cassette.name && <p>{cassette.name}</p> }
+                <input className='hiden' type='text' placeholder={'id Кассеты'}
+                       value={cassette.cassetteId} onChange={event => setCassette(event.target.value)} required/>
+                <button className={'form__button'} onClick={() => addRental()}>Добавить</button>
             </Overlay>
             <Header/>
             <Search sendData={handleData} sendUsername={getUsername} currentPage={'rental'} />
@@ -70,7 +67,7 @@ export default function RentalPage() {
                 <section className="rental">
                     <article className="rental-item">
                         <p className="rental__client" onClick={checkInfo}>{ username }</p>
-                        { username !== '' && <DropDownMenu active={isActive === 0} onMenuClick={() => handleClick(0)} rentalInformation={rentalInfo} /> }
+                        { username && <DropDownMenu active={isActive === 0} onMenuClick={() => handleClick(0)} rentalInformation={rentalInfo} /> }
                     </article>
                 </section>
                 <section className="interaction">

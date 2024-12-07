@@ -53,6 +53,8 @@ export default function SearchBar({ sendData, sendUsername, currentPage, sendCli
 
 
 
+
+    // Зона отчуждения
     async function searchRentalClient() {
         let consumers = [];
         consumers = await search.ClientSearch(searchValue);
@@ -73,7 +75,7 @@ export default function SearchBar({ sendData, sendUsername, currentPage, sendCli
         )));
         setSearchValue("")
     }
-
+    // End Зона отчуждения
 
 
 
@@ -113,11 +115,11 @@ export default function SearchBar({ sendData, sendUsername, currentPage, sendCli
     }
 
     function sendFilmId(film) {
-        sendCassetteId(film.cassetteId);
+        sendCassetteId(film);
         setFilmsList([]);
     }
     function sendConsumerId(consumer) {
-        sendClientId(consumer.id);
+        sendClientId(consumer);
         setConsumersList([]);
     }
 

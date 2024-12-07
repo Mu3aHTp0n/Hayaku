@@ -20,6 +20,7 @@ ul {
 .logo {
     width: 92px;
     cursor: pointer;
+    border-radius: .25em;
 }
 .list {
     list-style: none;

@@ -3,7 +3,7 @@ import axios from "axios";
 class Client {
     getClient(clientId) {
         return axios
-            .get(`http://130.193.44.220:5174/demo/client/${clientId}`)
+            .get(`https://hayaku.ru/demo/client/${clientId}`)
             .then((response) => {
                 return response.data;
             })
@@ -11,9 +11,9 @@ class Client {
                 console.error(error);
             })
     }
-    deleteClient(clientId) {
+    async deleteClient(clientId) {
         axios
-            .delete(`http://130.193.44.220:5174/demo/client/${clientId}`)
+            .delete(`https://hayaku.ru/demo/client/${clientId}`)
             .then((response) => {
                 response.status === 200 ? alert('Клиент успешно удалён') : null
             })
@@ -21,9 +21,9 @@ class Client {
                 console.error(error);
             })
     }
-    createClient(surname, name, patronymic, phone, passportSeries, passportNumber, issued, issuedDate) {
+    async createClient(surname, name, patronymic, phone, passportSeries, passportNumber, issued, issuedDate) {
         axios
-            .post('http://130.193.44.220:5174/demo/client/create', {
+            .post('https://hayaku.ru/demo/client/create', {
                 phone: phone,
                 name: name,
                 surname: surname,
@@ -33,12 +33,12 @@ class Client {
                 passportSeries: passportSeries,
                 passportNumber: passportNumber,
             })
-            .then(response => {
-                console.log(response)
+            .then(() => {
+                console.log("Клиент успешно добавлен")
             })
-            // .catch(error => {
-            //     console.error(error);
-            // })
+            .catch(error => {
+                console.error(error);
+            })
     }
 }
 

@@ -11,7 +11,7 @@ class Client {
                 console.error(error);
             })
     }
-    deleteClient(clientId) {
+    async deleteClient(clientId) {
         axios
             .delete(`https://hayaku.ru/demo/client/${clientId}`)
             .then((response) => {
@@ -21,7 +21,7 @@ class Client {
                 console.error(error);
             })
     }
-    createClient(surname, name, patronymic, phone, passportSeries, passportNumber, issued, issuedDate) {
+    async createClient(surname, name, patronymic, phone, passportSeries, passportNumber, issued, issuedDate) {
         axios
             .post('https://hayaku.ru/demo/client/create', {
                 phone: phone,
@@ -35,6 +35,7 @@ class Client {
             })
             .then(() => {
                 console.log("Клиент успешно добавлен")
+
             })
             // .catch(error => {
             //     console.error(error);

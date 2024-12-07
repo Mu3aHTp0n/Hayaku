@@ -9,15 +9,17 @@ import Search from "../SearchBar.jsx";
 import Header from "../Header.jsx";
 import {client} from "../services/Client.jsx";
 
+const date = new Date();
+
 export default function ClientPage() {
-    const [surnameValue, setSurnameValue] = useState()
-    const [nameValue, setNameValue] = useState()
-    const [patronymicValue, setPatronymicValue] = useState()
-    const [phoneValue, setPhoneValue] = useState()
-    const [passportSeriesValue, setPassportSeriesValue] = useState()
-    const [passportNumberValue, setPassportNumberValue] = useState()
-    const [issuedValue, setIssuedValue] = useState()
-    const [issuedDateValue, setIssuedDateValue] = useState()
+    const [surnameValue, setSurnameValue] = useState('')
+    const [nameValue, setNameValue] = useState('')
+    const [patronymicValue, setPatronymicValue] = useState('')
+    const [phoneValue, setPhoneValue] = useState('')
+    const [passportSeriesValue, setPassportSeriesValue] = useState('')
+    const [passportNumberValue, setPassportNumberValue] = useState('')
+    const [issuedValue, setIssuedValue] = useState('')
+    const [issuedDateValue, setIssuedDateValue] = useState(`${date.toISOString().slice(0, 10)}`)
 
     const [userInfo, setUserInfo] = useState({
         surname: null,
@@ -42,10 +44,7 @@ export default function ClientPage() {
 
     return (
         <>
-            <Overlay title={'Добавить клиента'} footerContent={
-                <>
-                </>
-            }>
+            <Overlay title={'Добавить клиента'}>
                 <input type='text' placeholder={'Фамилия'}
                        value={surnameValue} onChange={event => setSurnameValue(event.target.value)} required={true}/>
                 <input type='text' placeholder={'Имя'}
@@ -53,7 +52,7 @@ export default function ClientPage() {
                 <input type='text' placeholder={'Отчество'}
                        value={patronymicValue} onChange={event => setPatronymicValue(event.target.value)}
                        required={true}/>
-                <input type='tel' placeholder={'79536673978'} pattern="[0-9]{7,12}" maxLength={12}
+                <input type='tel' placeholder={'79536673978'} pattern="[7-8]{1}[0-9]{10}" maxLength={11}
                        value={phoneValue} onChange={event => setPhoneValue(event.target.value)} required={true}/>
                 <input type='number' placeholder={'Серия паспорта'} min={1000} max={9999}
                        value={passportSeriesValue} onChange={event => setPassportSeriesValue(event.target.value)}
@@ -63,10 +62,9 @@ export default function ClientPage() {
                        required={true}/>
                 <input type='text' placeholder={'Кем выдан'}
                        value={issuedValue} onChange={event => setIssuedValue(event.target.value)} required={true}/>
-                <input type='text' placeholder={'Когда выдан: гггг-мм-дд'} pattern={"[0-9]{4}-[0-9]{2}-[0-9]{2}"}
-                       value={issuedDateValue} onChange={event => setIssuedDateValue(event.target.value)}
-                       required/>
-                <input type={'submit'} className={'form__button'} value={'Submit'} onClick={createClient}/>
+                <input type='date' required min="1991-12-25" max={date.toISOString().slice(0, 10)}
+                       value={issuedDateValue} onChange={event => setIssuedDateValue(event.target.value)}/>
+                <button className={'form__button'} onClick={createClient}>Добавить</button>
             </Overlay>
             <Header/>
             <Search sendData={handleData} currentPage={'client'} />
@@ -85,7 +83,16 @@ export default function ClientPage() {
                 </section>
                 <section className="interaction">
                     <button onClick={() => setUi((prev) => ({...prev, modal: true}))}>Добавить Тайлера</button>
-                    <button onClick={() => client.deleteClient(userInfo.id)}>Удалить Тайлера</button>
+                    <button onClick={() => client.deleteClient(userInfo.id).then(() => setUserInfo({
+                        surname: null,
+                        name: null,
+                        patronymic: null,
+                        phone: null,
+                        passportSeries: null,
+                        passportNumber: null,
+                        issuedDate: null,
+                        issued: null,
+                    }))}>Удалить Тайлера</button>
                 </section>
             </Window>
         </>

@@ -5,7 +5,7 @@ import AuthWindow from "../Auth.jsx";
 
 export default function HomePage() {
     useTheme();
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState(false)
 
     function handleClick(setFalse) {
         setActive(setFalse)
